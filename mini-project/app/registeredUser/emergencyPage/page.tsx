@@ -1,93 +1,107 @@
 "use client";
-import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
+import hospitalsData from '@/data/hospitals.json'; // Adjust the path based on your file structure
+import Footer from '@/components/Footer';
+import Nav from '@/components/Nav';
+import Link from 'next/link';
+import { IoArrowBack } from "react-icons/io5";
 
-// List of Mumbai cities for autocomplete
-const mumbaiCities = [
-  "Andheri",
-  "Bandra",
-  "Borivali",
-  "Dadar",
-  "Ghatkopar",
-  "Juhu",
-  "Kurla",
-  "Malad",
-  "Mulund",
-  "Powai",
-  "Thane",
-  "Vashi",
-  "Worli",
-];
 
+// Emergency Page Component
 const EmergencyPage = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    number: "",
-    address: "",
-    emergencyType: "",
-    location: "",
+    name: '',
+    number: '',
+    emergencyType: '',
+    city: '',
+    hospital: '',
   });
-
-  const [filteredCities, setFilteredCities] = useState<string[]>([]);
   const [showVideoCall, setShowVideoCall] = useState(false);
+  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedHospitals, setSelectedHospitals] = useState([]);
 
   // Handle form data changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e:any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
 
-    // Show video call button if medical emergency is selected
-    if (name === "emergencyType") {
-      setShowVideoCall(value.includes("Medical"));
+    // Show video call button if a medical emergency is selected
+    if (name === 'emergencyType') {
+      setShowVideoCall(value === 'Medical: Cardiac Arrest');
     }
   };
 
-  // Handle location input changes and filter city list
-  const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setFormData((prev) => ({
-      ...prev,
-      location: value,
-    }));
-
-    // Filter Mumbai cities based on input
-    const filtered = mumbaiCities.filter((city) =>
-      city.toLowerCase().startsWith(value.toLowerCase())
-    );
-    setFilteredCities(filtered);
-  };
-
-  // Handle city selection
-  const handleCitySelect = (city: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      location: city,
-    }));
-    setFilteredCities([]); // Clear suggestions once a city is selected
+  // Handle city selection change
+  const handleCityChange = (e:any) => {
+    const city = e.target.value;
+    setSelectedCity(city);
+    
+    // Find hospitals for the selected city
+    const cityData = hospitalsData.find((item) => item.city === city);
+    if (cityData) {
+      setSelectedHospitals(cityData.hospitals);
+    } else {
+      setSelectedHospitals([]);
+    }
   };
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
+    const requestData = {
+      name: formData.name,
+      phoneNumber: formData.number,
+      emergencyType: formData.emergencyType,
+      city: selectedCity,
+      hospital: formData.hospital,
+    };
 
-    // Save the form data as JSON (in localStorage here, but you can use backend if needed)
-    const formDataJSON = JSON.stringify(formData);
-    console.log("Form Data JSON:", formDataJSON);
+    // Save the data to requests.json
+    try {
+      const response = await fetch('/api/requests', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
 
-    // Simulate saving to local JSON file
-    localStorage.setItem("emergencyFormData", formDataJSON);
+      if (!response.ok) {
+        throw new Error('Failed to save data');
+      }
 
-    alert("Form submitted and data saved!");
+      console.log('Form submitted successfully:', requestData);
+      setFormData({ name: '', number: '', emergencyType: '', city: '', hospital: '' });
+      setSelectedHospitals([]);
+      setShowVideoCall(false);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  // Function to copy phone number to clipboard
+  const copyToClipboard = (number:any) => {
+    navigator.clipboard.writeText(number)
+      .then(() => {
+        alert('Phone number copied to clipboard!');
+      })
+      .catch((err) => {
+        console.error('Could not copy text: ', err);
+      });
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 p-6 text-black bg-gray-100 rounded-md shadow-md">
-      <h1 className="text-3xl font-bold mb-6">Emergency Page</h1>
+    <div className='bg-slate-200'>
+        <Nav/>
+        <Link href='/registeredUser/optionss'><IoArrowBack size={40} className='text-white bg-red-900 p-2 m-10 rounded-lg font-bold' /></Link>
+    <div className="max-w-lg mx-auto m-10 p-6 text-black bg-gray-100 rounded-md shadow-md">
+      <h1 className="text-3xl font-bold mb-6">We are here for you!</h1>
       <form onSubmit={handleSubmit}>
-        {/* Name Field */}
+        {/* Form Fields */}
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2">Name:</label>
           <input
@@ -100,7 +114,6 @@ const EmergencyPage = () => {
           />
         </div>
 
-        {/* Phone Number Field */}
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2">Phone Number:</label>
           <input
@@ -113,47 +126,6 @@ const EmergencyPage = () => {
           />
         </div>
 
-        {/* Address Field */}
-        <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">Address:</label>
-          <textarea
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-900"
-            required
-          />
-        </div>
-
-        {/* Custom Location Input with Autocomplete */}
-        <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">Location:</label>
-          <input
-            type="text"
-            name="location"
-            value={formData.location}
-            onChange={handleLocationChange}
-            placeholder="Start typing city name..."
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-900"
-            required
-          />
-          {/* Show filtered cities as suggestions */}
-          {filteredCities.length > 0 && (
-            <ul className="border border-gray-300 rounded-md bg-white mt-1">
-              {filteredCities.map((city, index) => (
-                <li
-                  key={index}
-                  onClick={() => handleCitySelect(city)}
-                  className="px-4 py-2 cursor-pointer hover:bg-gray-200"
-                >
-                  {city}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-
-        {/* Emergency Type Dropdown */}
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2">Emergency Type:</label>
           <select
@@ -172,23 +144,71 @@ const EmergencyPage = () => {
           </select>
         </div>
 
+        {/* City Selector */}
+        <div className="mb-4">
+          <label className="block text-gray-700 font-bold mb-2">Select City:</label>
+          <select
+            value={selectedCity}
+            onChange={handleCityChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-red-900"
+            required
+          >
+            <option value="">Select a city</option>
+            {hospitalsData.map((cityData) => (
+              <option key={cityData.city} value={cityData.city}>
+                {cityData.city}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Display Hospitals */}
+        {selectedHospitals.length > 0 && (
+          <div className="mb-4">
+            <h2 className="font-bold mb-2">Nearby Hospitals:</h2>
+            <div className="grid grid-cols-1 gap-4">
+              {selectedHospitals.map((hospital) => (
+                <div key={hospital.name} className="p-4 border border-gray-300 rounded-md flex items-center">
+                  <img
+                    src={hospital.imageUrl}
+                    alt={hospital.name}
+                    className="w-16 h-16 rounded-md mr-4"
+                  />
+                  <div>
+                    <h3 className="font-bold">{hospital.name}</h3>
+                    <p className="flex items-center">
+                      <span 
+                        onClick={() => copyToClipboard(hospital.phone)} 
+                        className="cursor-pointer text-blue-500 mr-2"
+                        title="Copy Phone Number"
+                      >
+                        📋 {/* Copy icon, can be replaced with an icon library */}
+                      </span>
+                      {hospital.phone}
+                    </p>
+                    <p>{hospital.address}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Submit Button */}
-        <button
-          type="submit"
-          className="bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 focus:outline-none mb-4"
-        ><Link href='/registeredUser/emergencyPage/hospitalPage'>Submit</Link>
-          
-        </button>
+        
 
         {/* Conditionally render the video call button for medical emergencies */}
         {showVideoCall && (
-          <button className="bg-black text-white px-4 py-2 mt-4 rounded-md">
+          <button className="bg-black text-white px-4 py-2 mt-4 ml-2 rounded-md">
             Start Video Call
           </button>
         )}
       </form>
     </div>
+    <Footer/>
+    </div>
   );
 };
 
-export default EmergencyPage;
+// Dynamic import to ensure the component is loaded on the client-side
+export default dynamic(() => Promise.resolve(EmergencyPage), { ssr: false });

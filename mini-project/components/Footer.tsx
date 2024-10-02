@@ -1,4 +1,5 @@
 "use client"
+import Link from 'next/link';
 import React from 'react'
 import {
     FaFacebookF,
@@ -66,14 +67,14 @@ const Footer = () => {
             <h2 className="text-xl font-bold mb-4 text-white">Quick Links</h2>
             <ul className="space-y-2">
               <li>
-                <a href="/home" className="hover:text-red-500">
+                <Link href='/registeredUser/optionss'>
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/about" className="hover:text-red-500">
+              <Link href='/aboutUs'>
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="/services" className="hover:text-red-500">
@@ -81,9 +82,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/contact" className="hover:text-red-500">
-                  Contact Us
-                </a>
+                <Link href='/contactUs'>
+                Contact Us
+                </Link>
               </li>
             </ul>
           </div>

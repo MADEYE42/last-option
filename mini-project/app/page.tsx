@@ -13,7 +13,7 @@ function page() {
     <div className="min-h-screen bg-[url('/emergency.jpg')] bg-cover bg-center flex items-center justify-center">
       <div className={`w-full h-full absolute inset-0 ${blur ? 'backdrop-blur-md' : ''}`}></div>
       <div className="relative z-10 flex flex-col md:flex-row justify-between w-full max-w-4xl p-6 space-y-4 md:space-y-0">
-        <Link href='/emergencyUser'>
+        <Link href='/registeredUser/emergencyPage'>
         <div
           className="flex-1 bg-red-900 text-white rounded-lg p-10 text-center cursor-pointer hover:shadow-lg hover:opacity-90 transition-opacity"
           onClick={handleClick}

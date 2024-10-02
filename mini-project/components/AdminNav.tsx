@@ -5,6 +5,7 @@ import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { RiGraduationCapFill, RiMoneyRupeeCircleFill } from "react-icons/ri";
 import { IoPeople } from "react-icons/io5";
 import { BsInfoCircleFill } from "react-icons/bs";
+import Link from "next/link";
 
 const AdminNav = () => {
   const [nav, setNav] = useState(false);
@@ -25,13 +26,11 @@ const AdminNav = () => {
       {/* Full Menu for larger screens */}
       <div className="hidden lg:flex items-center justify-between gap-3 text-gray-800">
         <ul className="flex justify-between gap-6 text-[18px]">
-          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer">Contacts</li>
-          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer">Organisations</li>
-          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer">About Us</li>
-          <li className="underline text-red-900 p-3 hover:font-bold duration-300">Try Our App</li>
+          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/registeredUser/educationPage'>Education</Link></li>
+          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/admin'>Documents</Link></li>
+          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/aboutUs'>About Us</Link></li>
         </ul>
-        <button className="bg-red-900 p-3 rounded-md text-white font-bold hover:bg-white hover:text-red-900 duration-300">Download App</button>
-      </div>
+         </div>
 
       {/* Background Overlay for mobile menu */}
       {nav ? (
@@ -55,27 +54,22 @@ const AdminNav = () => {
         <nav>
           <ul className="flex flex-col p-6 text-gray-800">
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
+
               <RiGraduationCapFill size={25} />
-              Contacts
+              <Link href='/registeredUser/educationPage'>Education</Link>
             </li>
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
               <IoPeople size={25} />
-              Organisations
+              Documents
             </li>
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
               <BsInfoCircleFill size={25} />
-              About Us
+              <Link href='/aboutUs'>About Us</Link>
             </li>
             
-            <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
-              <RiMoneyRupeeCircleFill size={25} />
-              Donation
-            </li>
-            <li className="p-3 flex gap-3 items-center">Register your Organisation</li>
-            <li className="underline text-red-900 p-3 hover:font-bold duration-300">Try Our App</li>
-            <button className="bg-red-900 p-3 rounded-md text-white font-bold mt-4  hover:bg-white hover:text-red-900 duration-300">
-              Download App
-            </button>
+           
+            
+            
           </ul>
         </nav>
       </div>
