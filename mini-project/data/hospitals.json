@@ -1,0 +1,256 @@
+[
+    {
+      "city": "Andheri",
+      "hospitals": [
+        {
+          "name": "Andheri Medical Center",
+          "phone": "+91 1234567890",
+          "address": "Andheri (East)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Andheri Healthcare Hospital",
+          "phone": "+91 9876543210",
+          "address": "Andheri (West)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Holy Spirit Hospital",
+          "phone": "+91 1122334455",
+          "address": "Andheri (East)",
+          "imageUrl": "/hospital.jpg"
+        }
+      ]
+    },
+    {
+      "city": "Bandra",
+      "hospitals": [
+        {
+          "name": "Lilavati Hospital",
+          "phone": "+91 2233445566",
+          "address": "Bandra (West)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Bandra Medical Center",
+          "phone": "+91 9988776655",
+          "address": "Bandra (East)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "P.D. Hinduja Hospital",
+          "phone": "+91 7766554433",
+          "address": "Bandra (West)",
+          "imageUrl": "/hospital.jpg"
+        }
+      ]
+    },
+    {
+      "city": "Borivali",
+      "hospitals": [
+        {
+          "name": "Borivali Healthcare",
+          "phone": "+91 8899776655",
+          "address": "Borivali (West)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Karuna Hospital",
+          "phone": "+91 9988776655",
+          "address": "Borivali (East)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Phoenix Hospital",
+          "phone": "+91 7788665544",
+          "address": "Borivali (West)",
+          "imageUrl": "/hospital.jpg"
+        }
+      ]
+    },
+    {
+      "city": "Dadar",
+      "hospitals": [
+        {
+          "name": "Dadar Hospital",
+          "phone": "+91 5566778899",
+          "address": "Dadar (West)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Dadar Healthcare Center",
+          "phone": "+91 4433221100",
+          "address": "Dadar (East)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Bombay Hospital",
+          "phone": "+91 8877665544",
+          "address": "Dadar (West)",
+          "imageUrl": "/hospital.jpg"
+        }
+      ]
+    },
+    {
+      "city": "Ghatkopar",
+      "hospitals": [
+        {
+          "name": "Ghatkopar Hospital",
+          "phone": "+91 3344556677",
+          "address": "Ghatkopar (East)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Parakh Hospital",
+          "phone": "+91 2233445566",
+          "address": "Ghatkopar (West)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Rajawadi Hospital",
+          "phone": "+91 9988776655",
+          "address": "Ghatkopar (East)",
+          "imageUrl": "/hospital.jpg"
+        }
+      ]
+    },
+    {
+      "city": "Juhu",
+      "hospitals": [
+        {
+          "name": "Juhu Medical Center",
+          "phone": "+91 9988776655",
+          "address": "Juhu (West)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Juhu Hospital",
+          "phone": "+91 2233445566",
+          "address": "Juhu (East)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Juhu Life Care Hospital",
+          "phone": "+91 7788665544",
+          "address": "Juhu (West)",
+          "imageUrl": "/hospital.jpg"
+        }
+      ]
+    },
+    {
+      "city": "Kurla",
+      "hospitals": [
+        {
+          "name": "Kurla Healthcare",
+          "phone": "+91 2233445566",
+          "address": "Kurla (East)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Kurla General Hospital",
+          "phone": "+91 7788665544",
+          "address": "Kurla (West)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Kurla City Hospital",
+          "phone": "+91 8899776655",
+          "address": "Kurla (East)",
+          "imageUrl": "/hospital.jpg"
+        }
+      ]
+    },
+    {
+      "city": "Malad",
+      "hospitals": [
+        {
+          "name": "Malad Medical Center",
+          "phone": "+91 5566778899",
+          "address": "Malad (West)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Malad Life Care Hospital",
+          "phone": "+91 7788665544",
+          "address": "Malad (East)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Malad City Hospital",
+          "phone": "+91 9988776655",
+          "address": "Malad (West)",
+          "imageUrl": "/hospital.jpg"
+        }
+      ]
+    },
+    {
+      "city": "Mulund",
+      "hospitals": [
+        {
+          "name": "Mulund Hospital",
+          "phone": "+91 1122334455",
+          "address": "Mulund (East)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Mulund General Hospital",
+          "phone": "+91 2233445566",
+          "address": "Mulund (West)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Mulund Life Care",
+          "phone": "+91 8899776655",
+          "address": "Mulund (East)",
+          "imageUrl": "/hospital.jpg"
+        }
+      ]
+    },
+    {
+      "city": "Powai",
+      "hospitals": [
+        {
+          "name": "Powai Healthcare",
+          "phone": "+91 9988776655",
+          "address": "Powai (West)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Powai Medical Center",
+          "phone": "+91 7788665544",
+          "address": "Powai (East)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Hiranandani Hospital",
+          "phone": "+91 1122334455",
+          "address": "Powai (West)",
+          "imageUrl": "/hospital.jpg"
+        }
+      ]
+    },
+    {
+      "city": "Thane",
+      "hospitals": [
+        {
+          "name": "Thane Healthcare",
+          "phone": "+91 7788665544",
+          "address": "Thane (East)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Thane General Hospital",
+          "phone": "+91 8899776655",
+          "address": "Thane (West)",
+          "imageUrl": "/hospital.jpg"
+        },
+        {
+          "name": "Thane Life Care",
+          "phone": "+91 9988776655",
+          "address": "Thane (East)",
+          "imageUrl": "/hospital.jpg"
+        }
+      ]
+    }
+  ]
+  
