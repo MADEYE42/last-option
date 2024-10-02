@@ -2,36 +2,41 @@
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import hospitalsData from '@/data/hospitals.json'; // Adjust the path based on your file structure
+import Footer from '@/components/Footer';
+import Nav from '@/components/Nav';
+import Link from 'next/link';
+import { IoArrowBack } from "react-icons/io5";
+
 
 // Emergency Page Component
 const EmergencyPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     number: '',
-    address: '',
     emergencyType: '',
-    location: '',
+    city: '',
+    hospital: '',
   });
   const [showVideoCall, setShowVideoCall] = useState(false);
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedHospitals, setSelectedHospitals] = useState([]);
 
   // Handle form data changes
-  const handleChange = (e) => {
+  const handleChange = (e:any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
 
-    // Show video call button if medical emergency is selected
+    // Show video call button if a medical emergency is selected
     if (name === 'emergencyType') {
       setShowVideoCall(value === 'Medical: Cardiac Arrest');
     }
   };
 
   // Handle city selection change
-  const handleCityChange = (e) => {
+  const handleCityChange = (e:any) => {
     const city = e.target.value;
     setSelectedCity(city);
     
@@ -45,13 +50,41 @@ const EmergencyPage = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    const requestData = {
+      name: formData.name,
+      phoneNumber: formData.number,
+      emergencyType: formData.emergencyType,
+      city: selectedCity,
+      hospital: formData.hospital,
+    };
+
+    // Save the data to requests.json
+    try {
+      const response = await fetch('/api/requests', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save data');
+      }
+
+      console.log('Form submitted successfully:', requestData);
+      setFormData({ name: '', number: '', emergencyType: '', city: '', hospital: '' });
+      setSelectedHospitals([]);
+      setShowVideoCall(false);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   // Function to copy phone number to clipboard
-  const copyToClipboard = (number) => {
+  const copyToClipboard = (number:any) => {
     navigator.clipboard.writeText(number)
       .then(() => {
         alert('Phone number copied to clipboard!');
@@ -62,8 +95,11 @@ const EmergencyPage = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 p-6 text-black bg-gray-100 rounded-md shadow-md">
-      <h1 className="text-3xl font-bold mb-6">Emergency Page</h1>
+    <div className='bg-slate-200'>
+        <Nav/>
+        <Link href='/registeredUser/optionss'><IoArrowBack size={30} /></Link>
+    <div className="max-w-lg mx-auto m-10 p-6 text-black bg-gray-100 rounded-md shadow-md">
+      <h1 className="text-3xl font-bold mb-6">We are here for you!</h1>
       <form onSubmit={handleSubmit}>
         {/* Form Fields */}
         <div className="mb-4">
@@ -159,12 +195,7 @@ const EmergencyPage = () => {
         )}
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          className="bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 focus:outline-none mb-4"
-        >
-          Submit
-        </button>
+        
 
         {/* Conditionally render the video call button for medical emergencies */}
         {showVideoCall && (
@@ -173,6 +204,8 @@ const EmergencyPage = () => {
           </button>
         )}
       </form>
+    </div>
+    <Footer/>
     </div>
   );
 };
