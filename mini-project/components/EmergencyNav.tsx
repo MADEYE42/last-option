@@ -7,7 +7,7 @@ import { IoPeople } from "react-icons/io5";
 import { BsInfoCircleFill } from "react-icons/bs";
 import Link from "next/link";
 
-const Nav = () => {
+const EmergencyNav = () => {
   const [nav, setNav] = useState(false);
 
   return (
@@ -27,11 +27,8 @@ const Nav = () => {
       <div className="hidden lg:flex items-center justify-between gap-3 text-gray-800">
         <ul className="flex justify-between gap-6 text-[18px]">
           <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/registeredUser/educationPage'>Education</Link></li>
-          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer">Organisations</li>
           <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/aboutUs'>About Us</Link></li>
-          <li className="underline text-red-900 p-3 hover:font-bold duration-300"><Link href='https://play.google.com/store/games?hl=en'>Try our App</Link></li>
         </ul>
-        <button className="bg-red-900 p-3 rounded-md text-white font-bold hover:bg-white hover:text-red-900 duration-300"><Link href='/downApp'>Download App</Link></button>
       </div>
 
       {/* Background Overlay for mobile menu */}
@@ -58,7 +55,7 @@ const Nav = () => {
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
 
               <RiGraduationCapFill size={25} />
-              <Link href='/registeredUser/educationPage'>Education</Link>
+              Education
             </li>
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
               <IoPeople size={25} />
@@ -66,7 +63,7 @@ const Nav = () => {
             </li>
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
               <BsInfoCircleFill size={25} />
-              <Link href='/aboutUs'>About Us</Link>
+              About Us
             </li>
             
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
@@ -74,9 +71,9 @@ const Nav = () => {
               Donation
             </li>
             <li className="p-3 flex gap-3 items-center">Register your Organisation</li>
-            <li className="underline text-red-900 p-3 hover:font-bold duration-300"><Link href='https://play.google.com/store/games?hl=en'>Try our App</Link></li>
+            <li className="underline text-red-900 p-3 hover:font-bold duration-300">Try Our App</li>
             <button className="bg-red-900 p-3 rounded-md text-white font-bold mt-4  hover:bg-white hover:text-red-900 duration-300">
-            <Link href='/downApp'>Download App</Link>
+              Download App
             </button>
           </ul>
         </nav>
@@ -85,4 +82,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default EmergencyNav;
