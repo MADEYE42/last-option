@@ -6,7 +6,7 @@ import { useForm, ValidationError } from '@formspree/react';
 
 
   
-const contactUs = () => {
+const ContactUs = () => {
     const [state, handleSubmit] = useForm("xgvwggvv");
   if (state.succeeded) {
       return <p>Thanks for joining!</p>;
@@ -66,4 +66,4 @@ const contactUs = () => {
   )
 }
 
-export default contactUs
+export default ContactUs

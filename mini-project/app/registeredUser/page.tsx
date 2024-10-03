@@ -111,8 +111,9 @@ const RegisteredUser = () => {
           <button
             type="submit"
             className="bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 focus:outline-none"
-          ><Link href='/registeredUser/emergencyPage'>Submit</Link>            
+          >Submit            
           </button>
+          <button className='bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 focus:outline-none ml-2'><Link href='/registeredUser/emergencyPage'>Emergency</Link></button>
         </form>
       </div>
       <Footer />

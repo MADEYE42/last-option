@@ -16,7 +16,7 @@ interface Contact {
   crisis: string;
 }
 
-const contactsUser = () => {
+const ContactUser = () => {
   const [crisisFilter, setCrisisFilter] = useState('');
   const [suburbFilter, setSuburbFilter] = useState('');
 
@@ -103,4 +103,4 @@ const contactsUser = () => {
   );
 };
 
-export default contactsUser;
+export default ContactUser;

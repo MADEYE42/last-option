@@ -26,9 +26,9 @@ const AdminNav = () => {
       {/* Full Menu for larger screens */}
       <div className="hidden lg:flex items-center justify-between gap-3 text-gray-800">
         <ul className="flex justify-between gap-6 text-[18px]">
-          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/registeredUser/educationPage'>Education</Link></li>
-          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/admin'>Documents</Link></li>
-          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/aboutUs'>About Us</Link></li>
+          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/RegisteredUser/EducationPage'>Education</Link></li>
+          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/Admin'>Documents</Link></li>
+          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/AboutUs'>About Us</Link></li>
         </ul>
          </div>
 
@@ -56,15 +56,15 @@ const AdminNav = () => {
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
 
               <RiGraduationCapFill size={25} />
-              <Link href='/registeredUser/educationPage'>Education</Link>
+              <Link href='/RegisteredUser/EducationPage'>Education</Link>
             </li>
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
               <IoPeople size={25} />
-              Documents
+              <Link href='/Admin'>Documents</Link>
             </li>
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
               <BsInfoCircleFill size={25} />
-              <Link href='/aboutUs'>About Us</Link>
+              <Link href='/AboutUs'>About Us</Link>
             </li>
             
            
