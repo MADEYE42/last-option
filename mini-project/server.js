@@ -16,11 +16,11 @@ app.use(cors({
 // Middleware to handle multipart/form-data
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const uploadPath = path.join(__dirname, '@/public/uploads');
+    const uploadPath = path.join(__dirname, 'uploads'); // Corrected path
     if (!fs.existsSync(uploadPath)) {
       fs.mkdirSync(uploadPath); // Create uploads directory if it doesn't exist
     }
-    cb(null, '@/public/uploads/');
+    cb(null, uploadPath); // Pass the full path to cb
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname); // Keep original file name
