@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 
-function page() {
+function Page() {
   const [blur, setBlur] = useState(false);
 
   const handleClick = () => {
@@ -37,4 +37,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

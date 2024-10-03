@@ -2,7 +2,6 @@
 // app/page.tsx
 import React, { useState } from 'react';
 import contactsData from '@/data/contacts.json';
-import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import AdminNav from '@/components/AdminNav';
 

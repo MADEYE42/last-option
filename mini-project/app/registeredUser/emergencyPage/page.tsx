@@ -8,7 +8,6 @@ import Link from 'next/link';
 import { IoArrowBack } from "react-icons/io5";
 
 
-// Emergency Page Component
 const EmergencyPage = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -21,26 +20,20 @@ const EmergencyPage = () => {
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedHospitals, setSelectedHospitals] = useState([]);
 
-  // Handle form data changes
   const handleChange = (e:any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-
-    // Show video call button if a medical emergency is selected
     if (name === 'emergencyType') {
       setShowVideoCall(value === 'Medical: Cardiac Arrest');
     }
   };
-
-  // Handle city selection change
   const handleCityChange = (e:any) => {
     const city = e.target.value;
     setSelectedCity(city);
     
-    // Find hospitals for the selected city
     const cityData = hospitalsData.find((item) => item.city === city);
     if (cityData) {
       setSelectedHospitals(cityData.hospitals);
@@ -48,8 +41,6 @@ const EmergencyPage = () => {
       setSelectedHospitals([]);
     }
   };
-
-  // Handle form submission
   const handleSubmit = async (e:any) => {
     e.preventDefault();
     const requestData = {
@@ -59,8 +50,6 @@ const EmergencyPage = () => {
       city: selectedCity,
       hospital: formData.hospital,
     };
-
-    // Save the data to requests.json
     try {
       const response = await fetch('/api/requests', {
         method: 'POST',
@@ -83,7 +72,6 @@ const EmergencyPage = () => {
     }
   };
 
-  // Function to copy phone number to clipboard
   const copyToClipboard = (number:any) => {
     navigator.clipboard.writeText(number)
       .then(() => {
@@ -182,7 +170,7 @@ const EmergencyPage = () => {
                         className="cursor-pointer text-blue-500 mr-2"
                         title="Copy Phone Number"
                       >
-                        📋 {/* Copy icon, can be replaced with an icon library */}
+                        📋 
                       </span>
                       {hospital.phone}
                     </p>
@@ -194,10 +182,6 @@ const EmergencyPage = () => {
           </div>
         )}
 
-        {/* Submit Button */}
-        
-
-        {/* Conditionally render the video call button for medical emergencies */}
         {showVideoCall && (
           <button className="bg-black text-white px-4 py-2 mt-4 ml-2 rounded-md">
             Start Video Call
@@ -210,5 +194,4 @@ const EmergencyPage = () => {
   );
 };
 
-// Dynamic import to ensure the component is loaded on the client-side
 export default dynamic(() => Promise.resolve(EmergencyPage), { ssr: false });
