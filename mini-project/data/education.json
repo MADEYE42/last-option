@@ -1,0 +1,67 @@
+{
+  "data": [
+    {
+      "crisis": "Medical: Cardiac Arrest",
+      "videos": [
+        {
+          "title": "How to perform chest compression",
+          "videoLink": "https://www.youtube.com/shorts/4R5L-bautF4"
+        },
+        {
+          "title": "How to open airways",
+          "videoLink": "https://youtube.com/watch?v=2fnS8mtqzms"
+        },
+        {
+          "title": "CPR",
+          "videoLink": "https://www.youtube.com/watch?v=8YREVVM2n7g"
+        }
+      ]
+    },
+    {
+      "crisis": "Medical: Fall Victim",
+      "videos": [
+        {
+          "title": "How to treat with asthma attack",
+          "videoLink": "https://www.youtube.com/watch?v=hdVKpUR513M"
+        },
+        {
+          "title": "How to treat a fracture",
+          "videoLink": "https://youtu.be/2v8vlXgGXwE?si=XmSCkx-mDk8R2OdU"
+        },
+        {
+          "title": "Concussions",
+          "videoLink": "https://www.youtube.com/watch?v=mlWaByoT24s"
+        },
+        {
+          "title": "How to treat drowning",
+          "videoLink": "https://www.youtube.com/watch?v=Hlrbio-NpxQ"
+        },
+        {
+          "title": "The Recovery Position",
+          "videoLink": "https://www.youtube.com/watch?v=GmqXqwSV3bo"
+        },
+        {
+          "title": "How to deal with Severe Bleeding",
+          "videoLink": "https://youtu.be/5GVYiD0WzaE?si=wVgF5rj05gcxR2P2"
+        }
+      ]
+    },
+    {
+      "crisis": "Medical: Head Injury",
+      "videos": [
+        {
+          "title": "First Aid in Seizure",
+          "videoLink": "https://youtu.be/owXhSD7XwUk?si=OEChPLZUiixQcfdT"
+        },
+        {
+          "title": "First Aid and Emergency Treatment - Stroke Victim",
+          "videoLink": ""
+        },
+        {
+          "title": "First Aid in Choking",
+          "videoLink": ""
+        }
+      ]
+    }
+  ]
+}
