@@ -5,7 +5,7 @@ const VideoCall = () => {
   const endCall = () => {
     // Logic to end the call goes here
     // Redirect back to the emergency page after ending the call
-    window.location.href = "/emergency"; // Use window.location for navigation
+    window.location.href = "/registeredUser/optionss"; // Use window.location for navigation
   };
 
   return (
