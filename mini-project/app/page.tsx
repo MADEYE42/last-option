@@ -20,7 +20,7 @@ function Page() {
           className="flex-1 bg-red-900 text-white rounded-lg p-10 text-center cursor-pointer hover:shadow-lg hover:opacity-90 transition-opacity"
           onClick={handleClick}
         >
-          <h2 className="text-3xl font-bold">Emergency User</h2>
+          <h2 className="text-3xl font-bold">In Emergency</h2>
           <p className="mt-4">Click here for emergency services</p>
         </div>
         </Link>
@@ -35,7 +35,7 @@ function Page() {
         </div>
         </Link>
         <div className="w-4"></div> {/* Spacer between two sections */}
-        <Link href='/registeredUser'>
+        <Link href='/Volunteer'>
         <div
           className="flex-1 bg-red-900 text-white rounded-lg p-10 text-center cursor-pointer hover:shadow-lg hover:opacity-90 transition-opacity"
           onClick={handleClick}

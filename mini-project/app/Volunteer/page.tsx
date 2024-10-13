@@ -1,6 +1,8 @@
 // Use client directive since this is client-side code
 "use client";
 
+import Footer from '@/components/Footer';
+import Nav from '@/components/Nav';
 import React, { useState } from 'react';
 
 const Volunteer = () => {
@@ -46,6 +48,8 @@ const Volunteer = () => {
   };
 
   return (
+    <div>
+      <Nav/>
     <div className="flex justify-center items-center h-screen bg-slate-200">
       <form 
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -151,6 +155,8 @@ const Volunteer = () => {
           Submit
         </button>
       </form>
+    </div>
+    <Footer/>
     </div>
   );
 };
