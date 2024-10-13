@@ -5,15 +5,15 @@
       "videos": [
         {
           "title": "How to perform chest compression",
-          "videoLink": "https://www.youtube.com/shorts/4R5L-bautF4"
+          "videoLink": "/videos/cardiac/cardiac-chest-compression.mp4"
         },
         {
           "title": "How to open airways",
-          "videoLink": "https://youtube.com/watch?v=2fnS8mtqzms"
+          "videoLink": "/videos/cardiac/cardiac-how-to-open-airways.mp4"
         },
         {
           "title": "CPR",
-          "videoLink": "https://www.youtube.com/watch?v=8YREVVM2n7g"
+          "videoLink": "/videos/cardiac/cardiac-CPR.mp4"
         }
       ]
     },
@@ -22,27 +22,27 @@
       "videos": [
         {
           "title": "How to treat with asthma attack",
-          "videoLink": "https://www.youtube.com/watch?v=hdVKpUR513M"
+          "videoLink": "/videos/fall-victim/fall-victim-asthama.mp4"
         },
         {
           "title": "How to treat a fracture",
-          "videoLink": "https://youtu.be/2v8vlXgGXwE?si=XmSCkx-mDk8R2OdU"
+          "videoLink": "/videos/fall-victim/fall-victim-fracture.mp4"
         },
         {
           "title": "Concussions",
-          "videoLink": "https://www.youtube.com/watch?v=mlWaByoT24s"
+          "videoLink": "/videos/fall-victim/fall-victim-concussions.mp4"
         },
         {
           "title": "How to treat drowning",
-          "videoLink": "https://www.youtube.com/watch?v=Hlrbio-NpxQ"
+          "videoLink": "/videos/fall-victim/fall-victim-drowning.mp4"
         },
         {
           "title": "The Recovery Position",
-          "videoLink": "https://www.youtube.com/watch?v=GmqXqwSV3bo"
+          "videoLink": "/videos/fall-victim/fall-victim-recovery-position.mp4"
         },
         {
           "title": "How to deal with Severe Bleeding",
-          "videoLink": "https://youtu.be/5GVYiD0WzaE?si=wVgF5rj05gcxR2P2"
+          "videoLink": "/videos/fall-victim/fall-victim-severe-bleeding.mp4"
         }
       ]
     },
@@ -51,15 +51,15 @@
       "videos": [
         {
           "title": "First Aid in Seizure",
-          "videoLink": "https://youtu.be/owXhSD7XwUk?si=OEChPLZUiixQcfdT"
+          "videoLink": "/videos/head-injury/head-injury-siezure.mp4"
         },
         {
           "title": "First Aid and Emergency Treatment - Stroke Victim",
-          "videoLink": ""
+          "videoLink": "/videos/head-injury/stroke-victim.mp4"
         },
         {
           "title": "First Aid in Choking",
-          "videoLink": ""
+          "videoLink": "/videos/head-injury/first-aid-choking.mp4"
         }
       ]
     }
