@@ -23,7 +23,7 @@ const EmergencyPage = () => {
   const [videoModalVisible, setVideoModalVisible] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -57,7 +57,7 @@ const EmergencyPage = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     const requestData = {
       name: formData.name,
