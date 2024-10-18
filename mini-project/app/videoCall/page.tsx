@@ -2,23 +2,28 @@
 
 import React, { useEffect, useRef } from "react";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
-import io from "socket.io-client"; // Import socket.io-client
+import io from "socket.io-client";
 
-const socket = io("http://localhost:3001"); // Connect to the backend server
+const socket = io("http://localhost:3001", {
+  withCredentials: true,
+});
 
 const VideoCall = () => {
   const zepRef = useRef<any>(null);
 
   useEffect(() => {
+    console.log("VideoCall component mounted");
+
     const init = async () => {
       try {
         const appID = 563102835;
         const serverSecret = "2b4bb411cb70c040ccfc3d8dc982fdaa";
-        const roomID = "my_room_" + new Date().getTime();
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomID = urlParams.get('roomID') || "my_room_" + new Date().getTime();
         const userID = new Date().getTime().toString();
         const userName = "user_" + userID;
 
-        console.log("Room ID:", roomID);
+        console.log("Initializing video call with Room ID:", roomID);
 
         const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
           appID,
@@ -48,7 +53,10 @@ const VideoCall = () => {
         });
 
         // Emit an event to notify the admin about the call and pass the roomID
-        socket.emit("notify-admin", roomID);
+        if (!urlParams.get('roomID')) {
+          console.log("Emitting notify-admin event with roomID:", roomID);
+          socket.emit("notify-admin", roomID);
+        }
 
       } catch (error) {
         console.error("Error initializing ZegoUIKitPrebuilt:", error);
@@ -56,6 +64,11 @@ const VideoCall = () => {
     };
 
     init();
+
+    return () => {
+      console.log("VideoCall component unmounted");
+      // Add any cleanup logic here if needed
+    };
   }, []);
 
   return (
