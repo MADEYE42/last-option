@@ -1,119 +1,127 @@
-'use client';
-
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import ToastNotification from '@/components/ToastNotification';
+"use client";
 import Footer from '@/components/Footer';
 import Nav from '@/components/Nav';
+import Link from 'next/link';
+import React, { useState } from 'react';
 
-const RegisterPage = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [toastMessage, setToastMessage] = useState('');
-  const router = useRouter();
+const RegisteredUser = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    number: '',
+    address: '',
+    document: null,
+  });
 
-  const handleRegister = async (e: any) => {
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleFileChange = (e: any) => {
+    setFormData({
+      ...formData,
+      document: e.target.files[0],
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newUser = { name, email, password };
+    // Validate form data
+    if (!formData.document) {
+      alert("Please upload a document.");
+      return;
+    }
+
+    const data = new FormData();
+    data.append('name', formData.name);
+    data.append('number', formData.number);
+    data.append('address', formData.address);
+    data.append('document', formData.document);
 
     try {
-      const response = await fetch('/api/register', {
+      // Send the request to the API route
+      const response = await fetch('/api/saveUserData', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newUser),
+        body: data,
       });
 
       if (response.ok) {
-        setToastMessage('Registration successful');
-        setTimeout(() => router.push('/login'), 3000);
+        alert('Form submitted successfully!');
       } else {
-        setToastMessage('Registration failed');
+        alert('Error submitting form.');
       }
     } catch (error) {
-      console.error('Error during registration:', error);
-      setToastMessage('Error during registration');
+      console.error('Error submitting form:', error);
+      alert('There was an error submitting the form. Please try again later.');
     }
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
+    <div className='bg-white'>
       <Nav />
-      <div className="flex-grow flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-[Poppins]">
-        <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
-          <h2 className="text-3xl font-extrabold text-center text-gray-900">
-            Create your account
-          </h2>
-          <form className="mt-8 space-y-6" onSubmit={handleRegister}>
-            <div className="rounded-md shadow-sm -space-y-px">
-              <div className="mb-4">
-                <label htmlFor="name" className="sr-only">
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Your Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="email" className="sr-only">
-                  Email address
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="password" className="sr-only">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm mt-4"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-900 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out"
-              >
-                Register
-              </button>
-            </div>
-          </form>
-        </div>
-
-        {toastMessage && (
-          <ToastNotification message={toastMessage} />
-        )}
+      <div className="max-w-md mx-auto  p-6 bg-gray-200 rounded-md shadow-lg text-black m-10">
+        <h2 className="text-2xl font-bold mb-4">User Information</h2>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2">Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md focus:outline-none"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2">Phone Number:</label>
+            <input
+              type="text"
+              name="number"
+              value={formData.number}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md focus:outline-none"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2">Address:</label>
+            <textarea
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md focus:outline-none"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2">Upload Document:</label>
+            <input
+              type="file"
+              name="document"
+              onChange={handleFileChange}
+              className="w-full"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 focus:outline-none"
+          >
+            Submit
+          </button>
+          <button className='bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 focus:outline-none ml-2'>
+            <Link href='/registeredUser/emergencyPage'>Emergency</Link>
+          </button>
+        </form>
       </div>
       <Footer />
     </div>
   );
 };
 
-export default RegisterPage;
+export default RegisteredUser;

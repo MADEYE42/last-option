@@ -25,9 +25,8 @@ const Nav = () => {
 
       {/* Full Menu for larger screens */}
       <div className="hidden lg:flex items-center justify-between gap-3 text-gray-800">
-        <ul className="flex justify-between gap-6 text-[18px]">
-          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/registeredUser/educationPage'>Education</Link></li>
-          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer">Organisations</li>
+        <ul className="flex justify-between gap-6 text-[18px]">        
+          <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href="/admin">Admin</Link></li>
           <li className="p-3 hover:bg-gray-300 rounded-md duration-300 cursor-pointer"><Link href='/aboutUs'>About Us</Link></li>
           <li className="underline text-red-900 p-3 hover:font-bold duration-300"><Link href='https://play.google.com/store/games?hl=en'>Try our App</Link></li>
         </ul>
@@ -56,13 +55,8 @@ const Nav = () => {
         <nav>
           <ul className="flex flex-col p-6 text-gray-800">
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
-
-              <RiGraduationCapFill size={25} />
-              <Link href='/registeredUser/educationPage'>Education</Link>
-            </li>
-            <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
               <IoPeople size={25} />
-              Organisations
+              <Link href="/admin">Admin</Link>
             </li>
             <li className="p-3 flex gap-3 items-center hover:bg-gray-300 rounded-md duration-300 cursor-pointer">
               <BsInfoCircleFill size={25} />

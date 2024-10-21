@@ -1,0 +1,10 @@
+[
+    {
+      "name": "John Doe",
+      "phoneNumber": "1234567890",
+      "emergencyType": "Medical: Cardiac Arrest",
+      "city": "New York",
+      "hospital": "NYC General Hospital"
+    }
+  ]
+  
