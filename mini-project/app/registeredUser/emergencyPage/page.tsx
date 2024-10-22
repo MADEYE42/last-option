@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import dynamic from "next/dynamic";
 import hospitalsData from "@/data/hospitals.json";
 import educationData from "@/data/education.json";
 import Footer from "@/components/Footer";
@@ -209,7 +208,7 @@ const EmergencyPage = ({ fromRegisterPage }) => {
   return (
     <div className="bg-gradient-to-br from-blue-50 to-slate-200 min-h-screen flex flex-col">
       <Nav />
-      <Link href="/registeredUser/options">
+      <Link href="/registeredUser/optionss">
         <IoArrowBack
           size={40}
           className="text-white bg-red-600 p-2 m-10 rounded-lg shadow-md cursor-pointer hover:bg-red-500"
