@@ -26,10 +26,10 @@ function Page() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-6xl font-extrabold text-black mb-2 shadow-md">
+          <h1 className="text-6xl font-extrabold text-black mb-2">
             Crisis Call
           </h1>
-          <p className="text-2xl font-semibold text-black mb-6 shadow-md">
+          <p className="text-2xl font-semibold text-black mb-6 ">
             Your immediate help is just a call away!
           </p>
           <div className="bg-white rounded-lg shadow-lg p-6 mb-6 max-w-md">
@@ -63,18 +63,6 @@ function Page() {
                 <IoPerson size={40} />
                 <h2 className="text-2xl font-bold mt-2">Registered User</h2>
                 <p className="mt-4">Click here if you are a registered user</p>
-              </motion.div>
-            </Link>
-            <Link href="/Volunteer">
-              <motion.div
-                className="flex-1 bg-red-900 text-white rounded-lg p-10 text-center cursor-pointer hover:shadow-lg hover:opacity-90 transition-opacity flex flex-col items-center justify-center"
-                onClick={handleClick}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <IoCall size={40} />
-                <h2 className="text-2xl font-bold mt-2">Volunteer User</h2>
-                <p className="mt-4">Click here if you want to volunteer</p>
               </motion.div>
             </Link>
           </div>
